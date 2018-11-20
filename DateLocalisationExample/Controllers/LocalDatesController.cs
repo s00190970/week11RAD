@@ -12,7 +12,7 @@ namespace DateLocalisationExample.Controllers
 {
     public class LocalDatesController : Controller
     {
-        private DateContext db = new DateContext();
+        private Week11Context db = new Week11Context();
 
         // GET: LocalDates
         public ActionResult Index()

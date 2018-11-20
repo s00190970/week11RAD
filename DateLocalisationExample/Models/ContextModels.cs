@@ -23,18 +23,18 @@ namespace DateExample.DataModel
         public DateTime? EndDate{ get; set; }
     }
 
-    public class DateContext : DbContext
+    public class Week11Context : DbContext
     {
         public DbSet<LocalDate> Dates { get; set; }
 
-        public DateContext() : base(nameOrConnectionString: "DateExampleConnection")
+        public Week11Context() : base(nameOrConnectionString: "DateExampleConnection")
         {
 
         }
 
-        public static DateContext Create()
+        public static Week11Context Create()
         {
-            return new DateContext();
+            return new Week11Context();
         }
     }
 }

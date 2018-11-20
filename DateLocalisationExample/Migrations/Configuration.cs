@@ -7,14 +7,14 @@ namespace DateLocalisationExample.Migrations
     using System.Globalization;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<DateExample.DataModel.DateContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<DateExample.DataModel.Week11Context>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(DateExample.DataModel.DateContext context)
+        protected override void Seed(DateExample.DataModel.Week11Context context)
         {
             CultureInfo cultureinfo = CultureInfo.CreateSpecificCulture("en-IE");
 
