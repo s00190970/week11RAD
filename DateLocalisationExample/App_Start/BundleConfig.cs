@@ -27,6 +27,7 @@ namespace DateLocalisationExample
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Content/PagedList.css",
                       "~/Content/themes/base/jquery-ui.min.css", // Add jquery-ui styling
                       "~/Content/site.css"));
         }

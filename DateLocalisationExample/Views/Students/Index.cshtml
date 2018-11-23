@@ -1,7 +1,9 @@
-﻿@model IEnumerable<DateExample.DataModel.Student>
+﻿@using PagedList.Mvc
+@using PagedList
+@model PagedList.IPagedList<DateExample.DataModel.Student>
 
 @{
-    Layout = null;
+    ViewBag.Title = "Index";
 }
 
 <!DOCTYPE html>
@@ -12,16 +14,17 @@
     <title>Index</title>
 </head>
 <body>
+    <h2>Index</h2>
     <p>
-        @Html.ActionLink("Create New", "Create")
+        @Html.ActionLink("Create New", "Create", new { @class = "btn btn-primary" })
     </p>
     @using (Html.BeginForm("Index", "Students", FormMethod.Get, new { @class= "form-inline" }))
     {
-        @Html.Label("search", "First Name or Second: ", new { @class="control-label"})
+        @Html.Label("search", "Search by Name or Surname: ", new { @class="control-label"})
         @Html.TextBox("search", ViewBag.CurrentSearch as string, new { @class = "form-control" })
         <input type="submit" value="Search" class="btn btn-default"/>
     }
-    <table class="table">
+    <table class="table table-hover table-condensed small">
         <tr>
             <th>
                 @*@Html.DisplayNameFor(model => model.Firstname)*@
@@ -30,9 +33,6 @@
             <th>
                 @*@Html.DisplayNameFor(model => model.Surname)*@
                 @Html.ActionLink("Surname", "Index", new { sort = ViewBag.SnameSort, search = ViewBag.CurrentSearch})
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DateRegistered)
             </th>
             <th></th>
         </tr>
@@ -46,16 +46,20 @@
                 @Html.DisplayFor(modelItem => item.Surname)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.DateRegistered)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.StudentNumber }) |
-                @Html.ActionLink("Details", "Details", new { id=item.StudentNumber }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.StudentNumber })
+                @Html.ActionLink("Edit", "Edit", new { id=item.StudentNumber }, new { @class = "btn btn-primary btn-xs" })
+                @Html.ActionLink("Details", "Details", new { id=item.StudentNumber }, new { @class = "btn btn-primary btn-xs" })
+                @Html.ActionLink("Delete", "Delete", new { id=item.StudentNumber }, new { @class = "btn btn-danger btn-xs" })
             </td>
         </tr>
     }
     
     </table>
+    <div class="page-count">
+        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+    </div>
+    <div class="pagination">
+        @Html.PagedListPager(Model, page => Url.Action("Index",
+       new { page, sort = ViewBag.CurrentSort, search = ViewBag.CurrentSearch}))
+    </div>
 </body>
 </html>

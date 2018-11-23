@@ -12,6 +12,10 @@
     <title>Details</title>
 </head>
 <body>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/bootstrap")
     <div>
         <h4>Student</h4>
         <hr />
@@ -19,32 +23,32 @@
             <dt>
                 @Html.DisplayNameFor(model => model.Firstname)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.Firstname)
             </dd>
-    
+
             <dt>
                 @Html.DisplayNameFor(model => model.Surname)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.Surname)
             </dd>
-    
+
             <dt>
                 @Html.DisplayNameFor(model => model.DateRegistered)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.DateRegistered)
             </dd>
-    
+
         </dl>
     </div>
     <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.StudentNumber }) |
-        @Html.ActionLink("Back to List", "Index")
+        @Html.ActionLink("Edit", "Edit", new { id = Model.StudentNumber }, new { @class = "btn btn-primary btn-xs" })
+        @Html.ActionLink("Back to List", "Index", new { @class = "btn btn-primary btn-xs" })
     </p>
 </body>
 </html>
