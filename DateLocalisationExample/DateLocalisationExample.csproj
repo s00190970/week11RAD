@@ -162,8 +162,13 @@
     <Compile Include="Migrations\201811231133208_Students-Added.Designer.cs">
       <DependentUpon>201811231133208_Students-Added.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201811231144308_Registered Date added.cs" />
+    <Compile Include="Migrations\201811231144308_Registered Date added.Designer.cs">
+      <DependentUpon>201811231144308_Registered Date added.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ContextModels.cs" />
+    <Compile Include="Models\StudentData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -204,6 +209,9 @@
     <Content Include="Content\bootstrap-grid.css.map" />
     <EmbeddedResource Include="Migrations\201811231133208_Students-Added.resx">
       <DependentUpon>201811231133208_Students-Added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811231144308_Registered Date added.resx">
+      <DependentUpon>201811231144308_Registered Date added.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StudentList1.csv" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />

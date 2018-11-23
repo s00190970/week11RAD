@@ -20,6 +20,9 @@ namespace DateLocalisationExample.Migrations
 
         protected override void Seed(DateExample.DataModel.Week11Context context)
         {
+            Random gen = new Random();
+            DateTime start = new DateTime(2015, 01, 01);
+            int range = (DateTime.Today - start).Days;
 
             Assembly assembly = Assembly.GetExecutingAssembly();
             // Assembly name and resource stored in assembly
@@ -33,12 +36,26 @@ namespace DateLocalisationExample.Migrations
                     CsvReader csvReader = new CsvReader(reader);
                     csvReader.Configuration.HasHeaderRecord = false;
                     csvReader.Configuration.MissingFieldFound = null;
-                    var students = csvReader.GetRecords<Student>().ToArray();
-                    // Read the records into the desired collection of that type
-                    // and iterate over the collection
-                    context.Students.AddOrUpdate(s => s.StudentNumber, students);
+                    var students = csvReader.GetRecords<Models.StudentData>().ToList();
+                    foreach (var student in students)
+                    {
+                        context.Students.AddOrUpdate(new Student
+                        {
+                            StudentNumber = student.StudentNumber,
+                            Firstname = student.Firstname,
+                            Surname = student.Surname,
+                            DateRegistered = start.AddDays(gen.Next(range))
+                        });
+                        
+                    }
                 }
             }
+
+            
+
+            
+
+
 
             CultureInfo cultureinfo = CultureInfo.CreateSpecificCulture("en-IE");
 

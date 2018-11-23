@@ -31,6 +31,7 @@ namespace DateExample.DataModel
         public string StudentNumber { get; set; }
         public string Firstname { get; set; }
         public string Surname { get; set; }
+        public DateTime DateRegistered { get; set; }
     }
 
     public class Week11Context : DbContext
