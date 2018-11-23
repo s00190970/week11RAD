@@ -1,0 +1,61 @@
+﻿@model IEnumerable<DateExample.DataModel.Student>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    @using (Html.BeginForm("Index", "Students", FormMethod.Get, new { @class= "form-inline" }))
+    {
+        @Html.Label("search", "First Name or Second: ", new { @class="control-label"})
+        @Html.TextBox("search", ViewBag.CurrentSearch as string, new { @class = "form-control" })
+        <input type="submit" value="Search" class="btn btn-default"/>
+    }
+    <table class="table">
+        <tr>
+            <th>
+                @*@Html.DisplayNameFor(model => model.Firstname)*@
+                @Html.ActionLink("First Name", "Index", new { sort = ViewBag.FnameSort, search = ViewBag.CurrentSearch})
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.Surname)*@
+                @Html.ActionLink("Surname", "Index", new { sort = ViewBag.SnameSort, search = ViewBag.CurrentSearch})
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateRegistered)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Firstname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Surname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateRegistered)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.StudentNumber }) |
+                @Html.ActionLink("Details", "Details", new { id=item.StudentNumber }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.StudentNumber })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>
