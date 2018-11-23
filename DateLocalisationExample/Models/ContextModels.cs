@@ -23,11 +23,22 @@ namespace DateExample.DataModel
         public DateTime? EndDate{ get; set; }
     }
 
+    [Table("Student")]
+    public class Student
+    {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public string StudentNumber { get; set; }
+        public string Firstname { get; set; }
+        public string Surname { get; set; }
+    }
+
     public class Week11Context : DbContext
     {
         public DbSet<LocalDate> Dates { get; set; }
+        public DbSet<Student> Students { get; set; }
 
-        public Week11Context() : base(nameOrConnectionString: "DateExampleConnection")
+        public Week11Context() : base(nameOrConnectionString: "Week11Connection")
         {
 
         }
